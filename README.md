@@ -1,4 +1,4 @@
-# neuralfeature
+# Neural Feature
 Extract feature from pre-trained deep model using Torch 7
 
 ## Updates
@@ -7,7 +7,7 @@ Extract feature from pre-trained deep model using Torch 7
 
 ## Notes
 
-### VGG-16 structure
+### VGG ILSVRC-2014 16-layer
 
 ```
 conv1_1: 64 3 3 3
