@@ -39,6 +39,8 @@ function neuralfeature.extract(net_model, image_adds, layer_id)
         I=image.load(image_adds[i]);
         _, y=net:forward(I:float():cuda()):max(1);
         I_out=net.modules[layer_id].output;
+        
+        print(I_out:float()[{ {1,10} }])
         table.insert(out_feature, I_out);
         table.insert(out_labels, y);
     end
