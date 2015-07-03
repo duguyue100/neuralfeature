@@ -26,6 +26,7 @@ while true do
 end
 
 net = loadcaffe.load(prototxt, binary)
+net:evaluate();
 
 out, labels=neuralfeature.extract(net, angry_images)
 
