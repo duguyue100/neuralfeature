@@ -20,9 +20,9 @@ io.input(file);
 angry_images={};
 
 while true do
-	local image_adr=io.read();	
-	if image_adr==nil then break end	
-	table.insert(angry_images, image_adr);
+    local image_adr=io.read();	
+    if image_adr==nil then break end	
+    table.insert(angry_images, image_adr);
 end
 
 net = loadcaffe.load(prototxt, binary)
