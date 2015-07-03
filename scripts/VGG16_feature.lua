@@ -23,13 +23,13 @@ net:evaluate();
 
 out, labels=neuralfeature.extract(net, angry_images)
 
-out_save=torch.zeros(1000, #angry_images)
+out_save=torch.zeros(#angry_images, 1000)
 
 for i=1, #angry_images do
-    out_save[{ {}, i }]=out[i]:float()    
+    out_save[{ i, {} }]=out[i]    
 end
 
-print(out_save:size())
+print(out_save)
 
 myFile=hdf5.open('/home/arlmonster/test.h5', 'w');
 myFile:write('/home/arlmonster/test.h5', out_save);

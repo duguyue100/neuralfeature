@@ -22,7 +22,7 @@ neuralfeature={};
 --
 -- Returns
 -- -------
--- out_feature : table
+-- out_feature : table, elements are floatTensor
 --     list of extracted features
 -- out_labels : table
 --	   list of predicted labels by pre-trained model
@@ -40,8 +40,8 @@ function neuralfeature.extract(net_model, image_adds, layer_id)
         _, y=net:forward(I:float():cuda()):max(1);
         I_out=net.modules[layer_id].output;
         
-        print(I_out:float()[{ {1,10} }])
-        table.insert(out_feature, I_out);
+        --print(I_out:float()[{ {1,10} }])
+        table.insert(out_feature, I_out:float());
         table.insert(out_labels, y);
     end
     	
