@@ -45,3 +45,28 @@ function neuralfeature.extract(net_model, image_adds, layer_id)
     	
     return out_feature, out_labels;
 end
+
+--- Load a list of image paths given a text file
+--
+-- Parameters
+-- ----------
+-- list_adr : string
+--     file path of the image list 
+--
+-- Returns
+-- -------
+-- image_list : table
+--     list of image paths
+-- 
+function neuralfeature.loadimagelist(list_adr)
+    f=io.open(list_adr, 'r');
+    io.input(f);
+    image_list={};
+    while true do
+        local image_adr=io.read();  
+        if image_adr==nil then break end    
+        table.insert(image_list, image_adr);
+    end
+    
+    return image_list;
+end

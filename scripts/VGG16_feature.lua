@@ -12,20 +12,12 @@ require 'neuralfeature'
 prototxt='/home/arlmonster/workspace/neuralfeature/data/VGG_ILSVRC_16_layers_deploy.prototxt.txt'
 binary='/home/arlmonster/workspace/neuralfeature/data/VGG_ILSVRC_16_layers.caffemodel'
 
+angry_images=neuralfeature.loadimagelist("/home/arlmonster/workspace/neuralfeature/data/Train_SFEW_2_0/Angry/angry.txt");
+
 -- load as net
 
-file=io.open("/home/arlmonster/workspace/neuralfeature/data/Train_SFEW_2_0/Angry/angry.txt", 'r');
-io.input(file);
-
-angry_images={};
-
-while true do
-    local image_adr=io.read();	
-    if image_adr==nil then break end	
-    table.insert(angry_images, image_adr);
-end
-
 net = loadcaffe.load(prototxt, binary)
+-- switch off dropout
 net:evaluate();
 
 out, labels=neuralfeature.extract(net, angry_images)
