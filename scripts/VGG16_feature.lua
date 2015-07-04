@@ -46,16 +46,16 @@ neutral_out=extract_feature(net, neutral_images);
 sad_out=extract_feature(net, sad_images);
 surprise_out=extract_feature(net, surprise_images);
 
-function save_file(file_adr, out_save)
+function save_file(file_adr, group_adr, out_save)
     local my_file=hdf5.open(file_adr, 'w');
-    my_file:write(file_adr, out_save);
+    my_file:write(group_adr, out_save);
     my_file:close()
 end
 
-save_file("/home/arlmonster/angry.h5", angry_out);
-save_file("/home/arlmonster/disgust.h5", disgust_out);
-save_file("/home/arlmonster/fear.h5", fear_out);
-save_file("/home/arlmonster/happy.h5", happy_out);
-save_file("/home/arlmonster/neutral.h5", neutral_out);
-save_file("/home/arlmonster/sad.h5", sad_out);
-save_file("/home/arlmonster/surprise.h5", surprise_out);
+save_file("/home/arlmonster/angry.h5", "/angry", angry_out);
+save_file("/home/arlmonster/disgust.h5", "/disgust", disgust_out);
+save_file("/home/arlmonster/fear.h5", "/fear", fear_out);
+save_file("/home/arlmonster/happy.h5", "/happy", happy_out);
+save_file("/home/arlmonster/neutral.h5", "/neutral", neutral_out);
+save_file("/home/arlmonster/sad.h5", "/sad", sad_out);
+save_file("/home/arlmonster/surprise.h5", "surprise", surprise_out);
