@@ -7,6 +7,32 @@ Extract feature from pre-trained deep model using Torch 7
 
 ## Notes
 
+### Reading Videos in Torch 7
+
+You can use `ffmpeg` package for reading videos in Torch 7, basically, you can first install the library by:
+
+```
+luarocks install ffmpeg
+```
+
+After the installation, you may find that you cannot read video because of lacking `ffmpeg` in your system (Torch 7's package and `ffmepg` build are different), Ubuntu 14.04 cannot find `ffmepg` because it removed in their official package maintain, you can install `ffmpeg` by following commands though:
+
+```
+sudo add-apt-repository ppa:mc3man/trusty-media
+sudo apt-get update
+sudo apt-get install ffmpeg
+```
+
+Now you can try this simple script to test your installation
+
+```lua
+require 'ffmpeg'
+
+vid=ffmpeg.Video('/path/to/your/video');
+
+vid:play{}
+```
+
 ### VGG ILSVRC-2014 16-layer
 
 ```
