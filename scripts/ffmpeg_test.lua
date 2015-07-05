@@ -1,24 +1,20 @@
 -- FFMPEG test
 
+package.path = package.path .. ";../?.lua"
+
+require 'loadcaffe'
 require 'ffmpeg'
 require 'image'
 
-vid=ffmpeg.Video('../data/000046280.avi');
+require 'neuralfeature'
 
--- print number of frames
+prototxt='/home/arlmonster/workspace/neuralfeature/data/VGG_ILSVRC_16_layers_deploy.prototxt.txt'
+binary='/home/arlmonster/workspace/neuralfeature/data/VGG_ILSVRC_16_layers.caffemodel'
 
-print(vid.nframes);
+net = loadcaffe.load(prototxt, binary)
 
--- dumpy all as tensor
+out_feature, _=neuralfeature.v_extract(net, '../data/000046280.avi');
 
-content=vid:totensor{}
+print(#out_feature)
 
--- display tensor
-image.display(content[10])
-
--- play the video
-
-vid:play{}
-
--- for more information, please read code of:
--- https://github.com/clementfarabet/lua---ffmpeg/blob/master/init.lua
+print(out_feature[1])
